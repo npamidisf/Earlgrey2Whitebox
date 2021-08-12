@@ -1,8 +1,4 @@
-# Uncomment the next line to define a global platform for your project
-# platform :ios, '9.0'
-
 target 'Earlgrey2WhiteBox' do
-  # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
   pod 'EarlGreyApp', '2.2.1'
@@ -10,20 +6,18 @@ end
 
 target 'eDOBundle' do
   use_frameworks!
-  inherit! :search_paths
+
   pod 'EarlGreyApp', '2.2.1'
   pod 'EarlGreyTest', '2.2.1'
 end
 
 target 'Earlgrey2WhiteBoxUITests' do
   use_frameworks!
-  inherit! :search_paths
+
   pod 'EarlGreyTest', '2.2.1'
 end
 
 post_install do |installer|
-  # AppFramework is installed by EarlGreyApp and must be weakly linked to lazy load
-  # symbols as eDistantObjectBundle is injected into the app
   targets_to_weaklink=['eDOBundle']
   frameworks_to_weaklink=['AppFramework', 'EarlGreyTest', 'XCTest', 'eDistantObject']
   
