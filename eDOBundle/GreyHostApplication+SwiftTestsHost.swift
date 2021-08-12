@@ -6,10 +6,10 @@
 //
 
 import UIKit
+import EarlGreyTest
 
 extension GREYHostApplicationDistantObject: SwiftTestsHost {
-
-  func interfaceOrientation() -> UIInterfaceOrientation {
-    return UIApplication.shared.statusBarOrientation
-  }
+    public func interfaceOrientation() -> UIInterfaceOrientation {
+        return UIApplication.shared.statusBarOrientation
+    }
 }

@@ -12,6 +12,7 @@ target 'eDOBundle' do
   use_frameworks!
   inherit! :search_paths
   pod 'EarlGreyApp', '2.2.1'
+  pod 'EarlGreyTest', '2.2.1'
 end
 
 target 'Earlgrey2WhiteBoxUITests' do
@@ -24,7 +25,7 @@ post_install do |installer|
   # AppFramework is installed by EarlGreyApp and must be weakly linked to lazy load
   # symbols as eDistantObjectBundle is injected into the app
   targets_to_weaklink=['eDOBundle']
-  frameworks_to_weaklink=['AppFramework']
+  frameworks_to_weaklink=['AppFramework', 'EarlGreyTest', 'XCTest', 'eDistantObject']
   
   targets_to_weaklink.map!{|t| t="Pods-#{t}"}
   installer.pods_project.targets.each do |target|
